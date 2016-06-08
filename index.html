@@ -525,8 +525,36 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>Register Successful</td>
 </tr>
 <tr>
-<td>201</td>
-<td>Without ClientID</td>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>402</td>
+<td>The Client is not registried</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The data can not parse to json</td>
+</tr>
+<tr>
+<td>405</td>
+<td>The suject is exist</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Register fail: miss parameter &#39;sub&#39;</td>
+</tr>
+<tr>
+<td>407</td>
+<td>Register fail: miss parameter &#39;pwd&#39;</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Register fail: miss parameter &#39;seed&#39;</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
 </tr>
 </tbody>
 </table>
@@ -638,8 +666,20 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>Update Successful</td>
 </tr>
 <tr>
-<td>201</td>
-<td>Without ClientID</td>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The data can not parse to json</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The Subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
 </tr>
 </tbody>
 </table>
