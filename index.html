@@ -366,7 +366,7 @@ sup {
 
 <tbody>
 <tr>
-<td>subject</td>
+<td>sub</td>
 <td>(required)String</td>
 <td>member account ID</td>
 </tr>
@@ -506,6 +506,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>ret_description</td>
 <td>The state&#39;s detail description</td>
 </tr>
+<tr>
+<td>refresh_token</td>
+<td>The refresh token for relay parties</td>
+</tr>
 </tbody>
 </table>
 
@@ -530,7 +534,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 </tr>
 <tr>
 <td>402</td>
-<td>The Client is not registried</td>
+<td>The client is not registried</td>
 </tr>
 <tr>
 <td>403</td>
@@ -561,13 +565,15 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p>Return example:</p>
 
-<p>{</p>
+<div><pre><code class="language-none">{
 
-<p>&quot;ret_code&quot; : 200,</p>
+  &quot;ret_code&quot; : 200,
 
-<p>&quot;ret_description&quot; : &quot;Register Successful&quot;</p>
+  &quot;ret_description&quot; : &quot;Register Successful&quot;
+  
+  &quot;refresh_token&quot; : 5f9665ca0238df61fb133dde0e59753cb57764cbf8229cb2098f7cf109d05b07
 
-<p>}</p>
+}</code></pre></div>
 
 <h2 id="toc_6">updatemember</h2>
 
@@ -594,10 +600,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <tbody>
 <tr>
-<td>更新指定使用者資料(名字｀電話｀Email`密碼....等)</td>
+<td>更新指定使用者資料(名字｀電話｀Email`密碼....等) , 並且透過各平台方註冊的API網址將同步資料用Post Json的方式打過去</td>
 </tr>
 <tr>
-<td>Updating target user data(name phone email pwd ...etc)</td>
+<td>Updating target user data(name phone email pwd ...etc) , then pushing sync data to the other relay parties&#39;s Sync API by http post json</td>
 </tr>
 </tbody>
 </table>
@@ -675,7 +681,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 </tr>
 <tr>
 <td>404</td>
-<td>The Subject isn&#39;t registried</td>
+<td>The subject isn&#39;t registried</td>
 </tr>
 <tr>
 <td>500</td>
@@ -686,13 +692,522 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p>Return example:</p>
 
-<p>{</p>
+<div><pre><code class="language-none">{
 
-<p>&quot;ret_code&quot; : 200,</p>
+  &quot;ret_code&quot; : 200,
 
-<p>&quot;ret_description&quot; : &quot;Update Successful&quot;</p>
+  &quot;ret_description&quot; : &quot;Update Successful&quot;
 
-<p>}</p>
+}</code></pre></div>
+
+<h2 id="toc_7">checkidpassword</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/checkidpassword</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>確認此帳號密碼是否正確</td>
+</tr>
+<tr>
+<td>Check the member account id with the password is correct</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>password</td>
+<td>(required)String</td>
+<td>Password</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+</tbody>
+</table>
+
+<p>JSON Content Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>Incorrect</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Correct</td>
+</tr>
+</tbody>
+</table>
+
+<p>Return example:</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_code&quot; : 0
+}</code></pre></div>
+
+<h2 id="toc_8">userallinfo</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/userallinfo</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>取得指定的所有使用者資料</td>
+</tr>
+<tr>
+<td>Get target user&#39;s all information</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<p>Successful -</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_data</td>
+<td>The user&#39;s all infomation data in json format</td>
+</tr>
+</tbody>
+</table>
+
+<p>Fail - </p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_description</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Get user infomation success</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<p>Return example:</p>
+
+<p>Successful -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_code&quot;: 200,
+  &quot;ret_data&quot;: {
+    &quot;sub&quot;: &quot;a&quot;,
+    &quot;website&quot;: null,
+    &quot;zoneinfo&quot;: null,
+    &quot;birthdate&quot;: null,
+    &quot;email_verified&quot;: false,
+    &quot;address&quot;: {
+      &quot;street_address&quot;: &quot;492, Sg. Chua&quot;,
+      &quot;country&quot;: &quot;Malaysia&quot;,
+      &quot;formatted&quot;: &quot;491, Sg. Chua, 43 000 Kajang, Selangor&quot;,
+      &quot;locality&quot;: &quot;Kajang&quot;,
+      &quot;region&quot;: &quot;Selangor&quot;,
+      &quot;postal_code&quot;: &quot;43 000&quot;
+    },
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;profile&quot;: null,
+    &quot;phone_number_verified&quot;: false,
+    &quot;preferred_username&quot;: null,
+    &quot;given_name&quot;: null,
+    &quot;middle_name&quot;: null,
+    &quot;locale&quot;: null,
+    &quot;picture&quot;: null,
+    &quot;updated_at&quot;: &quot;2016-06-17 01:59:03.0&quot;,
+    &quot;name&quot;: &quot;Smith Liu&quot;,
+    &quot;nickname&quot;: &quot;A桑桑&quot;,
+    &quot;phone_number&quot;: &quot;886911222333&quot;,
+    &quot;family_name&quot;: null,
+    &quot;email&quot;: &quot;a@gmail.com&quot;
+  }
+}</code></pre></div>
+
+<p>Fail -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_description&quot;: &quot;The Subject isn&#39;t registried&quot;,
+  &quot;ret_code&quot;: 404
+}</code></pre></div>
+
+<h2 id="toc_9">allsyncfaildata</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/allsyncfaildata</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>取得當其他Client更新userinfo時，應該Post給relay party同步卻失敗的所有同步資料</td>
+</tr>
+<tr>
+<td>Get all synchronize data which relay party should get but fail when other client update userinfo</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: None</p>
+
+<p>Result:</p>
+
+<p>Successful -</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_data</td>
+<td>The user&#39;s all infomation data in json format</td>
+</tr>
+</tbody>
+</table>
+
+<p>Fail - </p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_description</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Get all synchorize data success  or No any synchorize fail data</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>402</td>
+<td>The client is not registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<p>Return example:</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_code&quot;: 200,
+  &quot;ret_data&quot;: [
+    {
+      &quot;sync_time&quot;: &quot;2016-06-22 07:26:24.0&quot;,
+      &quot;sync_data&quot;: {
+        &quot;sub&quot;: &quot;a&quot;,
+        &quot;nickname&quot;: &quot;Asir&quot;
+      }
+    },
+    {
+      &quot;sync_time&quot;: &quot;2016-06-22 07:26:32.0&quot;,
+      &quot;sync_data&quot;: {
+        &quot;sub&quot;: &quot;a&quot;,
+        &quot;nickname&quot;: &quot;Bsir&quot;
+      }
+    },
+    {
+      &quot;sync_time&quot;: &quot;2016-06-22 07:26:39.0&quot;,
+      &quot;sync_data&quot;: {
+        &quot;sub&quot;: &quot;a&quot;,
+        &quot;nickname&quot;: &quot;Csir&quot;
+      }
+    }
+  ]
+}</code></pre></div>
+
+<p>Fail -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_description&quot;: &quot;The Client is not registried&quot;,
+  &quot;ret_code&quot;: 402
+}</code></pre></div>
+
+<h2 id="toc_10">clearsyncfaildata</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/clearsyncfaildata</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Relay party在成功取得所有同步資料後，來告知清除所有跟此Relay party相關的同步失敗的資料</td>
+</tr>
+<tr>
+<td>After relay party get all synchronize data, notice sso server to remove all synchronize data about the relay party</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: None</p>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_description</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Clear all synchronize data success</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_description&quot;: &quot;Clear all synchronize data success&quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
 
 
 
