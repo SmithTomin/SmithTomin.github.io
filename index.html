@@ -397,7 +397,7 @@ sup {
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -503,7 +503,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The back state code which we defined</td>
 </tr>
 <tr>
-<td>ret_description</td>
+<td>ret_desc</td>
 <td>The state&#39;s detail description</td>
 </tr>
 <tr>
@@ -519,7 +519,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -569,7 +569,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
   &quot;ret_code&quot; : 200,
 
-  &quot;ret_description&quot; : &quot;Register Successful&quot;
+  &quot;ret_desc&quot; : &quot;Register Successful&quot;
   
   &quot;refresh_token&quot; : 5f9665ca0238df61fb133dde0e59753cb57764cbf8229cb2098f7cf109d05b07
 
@@ -650,7 +650,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The back state code which we defined</td>
 </tr>
 <tr>
-<td>ret_description</td>
+<td>ret_desc</td>
 <td>The state&#39;s detail description</td>
 </tr>
 </tbody>
@@ -662,7 +662,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -696,7 +696,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
   &quot;ret_code&quot; : 200,
 
-  &quot;ret_description&quot; : &quot;Update Successful&quot;
+  &quot;ret_desc&quot; : &quot;Update Successful&quot;
 
 }</code></pre></div>
 
@@ -782,7 +782,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -897,7 +897,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The back state code which we defined</td>
 </tr>
 <tr>
-<td>ret_description</td>
+<td>ret_desc</td>
 <td>The state&#39;s detail description</td>
 </tr>
 </tbody>
@@ -909,7 +909,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -955,15 +955,16 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
     },
     &quot;gender&quot;: &quot;male&quot;,
     &quot;profile&quot;: null,
+    &quot;register_clientID&quot;: &quot;ominec&quot;,     //!!!  The data is custom field !!!
     &quot;phone_number_verified&quot;: false,
     &quot;preferred_username&quot;: null,
     &quot;given_name&quot;: null,
     &quot;middle_name&quot;: null,
     &quot;locale&quot;: null,
     &quot;picture&quot;: null,
-    &quot;updated_at&quot;: &quot;2016-06-17 01:59:03.0&quot;,
+    &quot;updated_at&quot;: &quot;2016-06-27 04:07:27.0&quot;,
     &quot;name&quot;: &quot;Smith Liu&quot;,
-    &quot;nickname&quot;: &quot;A桑桑&quot;,
+    &quot;nickname&quot;: &quot;a桑桑&quot;,
     &quot;phone_number&quot;: &quot;886911222333&quot;,
     &quot;family_name&quot;: null,
     &quot;email&quot;: &quot;a@gmail.com&quot;
@@ -973,7 +974,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <p>Fail -</p>
 
 <div><pre><code class="language-none">{
-  &quot;ret_description&quot;: &quot;The Subject isn&#39;t registried&quot;,
+  &quot;ret_desc&quot;: &quot;The Subject isn&#39;t registried&quot;,
   &quot;ret_code&quot;: 404
 }</code></pre></div>
 
@@ -1052,7 +1053,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The back state code which we defined</td>
 </tr>
 <tr>
-<td>ret_description</td>
+<td>ret_desc</td>
 <td>The state&#39;s detail description</td>
 </tr>
 </tbody>
@@ -1064,7 +1065,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -1120,7 +1121,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <p>Fail -</p>
 
 <div><pre><code class="language-none">{
-  &quot;ret_description&quot;: &quot;The Client is not registried&quot;,
+  &quot;ret_desc&quot;: &quot;The Client is not registried&quot;,
   &quot;ret_code&quot;: 402
 }</code></pre></div>
 
@@ -1175,7 +1176,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The back state code which we defined</td>
 </tr>
 <tr>
-<td>ret_description</td>
+<td>ret_desc</td>
 <td>The state&#39;s detail description</td>
 </tr>
 </tbody>
@@ -1187,7 +1188,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <thead>
 <tr>
 <th>ret_code</th>
-<th>ret_description</th>
+<th>ret_desc</th>
 </tr>
 </thead>
 
@@ -1205,7 +1206,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <div><pre><code class="language-none">Return example:
 {
-  &quot;ret_description&quot;: &quot;Clear all synchronize data success&quot;,
+  &quot;ret_desc&quot;: &quot;Clear all synchronize data success&quot;,
   &quot;ret_code&quot;: 200
 }</code></pre></div>
 
