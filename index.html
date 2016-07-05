@@ -751,9 +751,14 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>member account ID</td>
 </tr>
 <tr>
-<td>password</td>
+<td>pwd</td>
 <td>(required)String</td>
-<td>Password</td>
+<td>The password encrypt string with seed by AES ( Key Format : ddHHssMMddHHssMM )</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>(required)String</td>
+<td>The AES key which is the timestamp when registering( Format : yyyyMMddHHmmss )</td>
 </tr>
 </tbody>
 </table>
@@ -1207,6 +1212,398 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <div><pre><code class="language-none">Return example:
 {
   &quot;ret_desc&quot;: &quot;Clear all synchronize data success&quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<h2 id="toc_11">forgotpassword</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/forgotpassword</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>在驗證User帳號和email是匹配之後，發送有效時間15分鐘的驗證碼到使用者信箱</td>
+</tr>
+<tr>
+<td>After verifing user account and email are matched,sending verify code to user&#39;s email</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>email</td>
+<td>(required)String</td>
+<td>user&#39;s e-mail</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Sending verify code by e-mail success</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Sending email fail</td>
+</tr>
+<tr>
+<td>411</td>
+<td>The user have no email</td>
+</tr>
+<tr>
+<td>412</td>
+<td>The email is not match with the subject</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Sending verify code by e-mail success&quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<h2 id="toc_12">checkforgotverify</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/checkforgotverify</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>當User輸入驗證碼時，檢查忘記密碼的驗證碼是否正確</td>
+</tr>
+<tr>
+<td>When user input verify code for forgoting password,checking its accuracy</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>email</td>
+<td>(required)String</td>
+<td>user&#39;s e-mail</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>(required)String</td>
+<td>verify code which we sended by email</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Verify code is correct</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Verify code is incorrect</td>
+</tr>
+<tr>
+<td>414</td>
+<td>Verify code is expired</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Verify code is correct &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<h2 id="toc_13">verifycodeupdatepwd</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/verifycodeupdatepwd</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>User驗證碼驗證通過後，使用驗證碼來進行密碼的更動</td>
+</tr>
+<tr>
+<td>After user pass verify code chechking,using verify code to update their password</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>email</td>
+<td>(required)String</td>
+<td>user&#39;s e-mail</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>(required)String</td>
+<td>verify code which we sended by email</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>(required)String</td>
+<td>the password is encrypted by AES</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>(required)String</td>
+<td>password&#39;s AES Key</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Updating password completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Verify code is incorrect</td>
+</tr>
+<tr>
+<td>414</td>
+<td>Verify code is expired</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Updating password completed &quot;,
   &quot;ret_code&quot;: 200
 }</code></pre></div>
 
