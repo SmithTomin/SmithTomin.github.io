@@ -312,15 +312,54 @@ sup {
 
 <body>
 
-<h1 id="toc_0">Tomin Single Sign On Server API</h1>
+<h1 id="toc_0">Toming SSO API Guide</h1>
 
-<h3 id="toc_1">These APIs are usually used for registring or changeing user info by relay parties(EC`IM...etc).The most data format is defined in the <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">link</a>,but we still need to add some custom data(like pwd,seed) for some reqirement(like authentication) when using these APIs.</h3>
+<ul>
+<li><h2 id="toc_1"><a name="index"></a> Index</h2></li>
+<li><h4 id="toc_2">API root URL :</h4>
 
-<h3 id="toc_2">這些API一般是給RP(像EC IM...)用在註冊或是更換使用者資料時使用，大部份的資料規格都是參照此<a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">連結</a>,不過當我們使用這些API時仍需要為了特定需求(如認證)而需加入一些特定的資料(像pwd,seed)</h3>
+<p>http://qasso.tomin.tw:8081/TominOP/oidc</p>
 
-<h4 id="toc_3">API root URL : http://qasso.tomin.tw:8081/TominOP/oidc</h4>
+<ul>
+<li><p><a href="#Tomin%20Single%20Sign%20On%20Server%20API"><strong>Tomin Single Sign On Server API</strong></a></p>
 
-<h2 id="toc_4">verifymember</h2>
+<ul>
+<li><a href="#verifymember">/verifymember</a> </li>
+<li><a href="#register">/register</a> </li>
+<li><a href="#verifymember">/verifymember</a></li>
+<li><a href="#register">/register</a> </li>
+<li><a href="#updatemember">/updatemember</a> </li>
+<li><a href="#checkidpassword">/checkidpassword</a> </li>
+<li><a href="#userallinfo">/userallinfo</a> </li>
+<li><a href="#allsyncfaildata">/allsyncfaildata</a> </li>
+<li><a href="#clearsyncfaildata">/clearsyncfaildata</a> </li>
+<li><a href="#forgotpassword">/forgotpassword</a> </li>
+<li><a href="#checkforgotverify">/checkforgotverify</a> </li>
+<li><a href="#verifycodeupdatepwd">/verifycodeupdatepwd</a> </li>
+<li><a href="#getsubemail">/getsubemail</a> </li>
+<li><a href="#updatesubemail">/updatesubemail</a> </li>
+<li><a href="#deletesubemail">/deletesubemail</a> </li>
+<li><a href="#getsubphone">/getsubphone</a> </li>
+<li><a href="#updatesubphone">/updatesubphone</a> </li>
+<li><a href="#deletesubphone">/deletesubphone</a> </li>
+</ul></li>
+<li><p><a href="#Predefine%20API"><strong>Predefine API</strong></a> </p>
+
+<ul>
+<li><a href="#gender">/predefine/gender</a> </li>
+<li><a href="#locale">/predefine/locale</a> </li>
+<li><a href="#zoneinfo">/predefine/zoneinfo</a> </li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="toc_3"><a name="Tomin Single Sign On Server API"></a> Tomin Single Sign On Server API</h1>
+
+<h3 id="toc_4">These APIs are usually used for registring or changeing user info by relay parties(EC`IM...etc).The most data format is defined in the <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">link</a>,but we still need to add some custom data(like pwd,seed) for some reqirement(like authentication) when using these APIs.</h3>
+
+<h3 id="toc_5">這些API一般是給RP(像EC IM...)用在註冊或是更換使用者資料時使用，大部份的資料規格都是參照此<a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">連結</a>,不過當我們使用這些API時仍需要為了特定需求(如認證)而需加入一些特定的資料(像pwd,seed)</h3>
+
+<h2 id="toc_6"><a name="verifymember"></a> verifymember</h2>
 
 <table>
 <thead>
@@ -421,7 +460,9 @@ sup {
   &quot;ret_code&quot; : 0
 }</p>
 
-<h2 id="toc_5">register</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_7"><a name="register"></a> register</h2>
 
 <table>
 <thead>
@@ -579,7 +620,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 }</code></pre></div>
 
-<h2 id="toc_6">updatemember</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_8"><a name="updatemember"></a> updatemember</h2>
 
 <table>
 <thead>
@@ -706,7 +749,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 }</code></pre></div>
 
-<h2 id="toc_7">checkidpassword</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_9"><a name="checkidpassword"></a> checkidpassword</h2>
 
 <table>
 <thead>
@@ -817,7 +862,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot; : 0
 }</code></pre></div>
 
-<h2 id="toc_8">userallinfo</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_10"><a name="userallinfo"></a> userallinfo</h2>
 
 <table>
 <thead>
@@ -993,7 +1040,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 404
 }</code></pre></div>
 
-<h2 id="toc_9">allsyncfaildata</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_11"><a name="allsyncfaildata"></a> allsyncfaildata</h2>
 
 <table>
 <thead>
@@ -1108,6 +1157,8 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p>Return example:</p>
 
+<p>Successful -</p>
+
 <div><pre><code class="language-none">{
   &quot;ret_code&quot;: 200,
   &quot;ret_data&quot;: [
@@ -1142,7 +1193,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 402
 }</code></pre></div>
 
-<h2 id="toc_10">clearsyncfaildata</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_12"><a name="clearsyncfaildata"></a> clearsyncfaildata</h2>
 
 <table>
 <thead>
@@ -1229,7 +1282,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 200
 }</code></pre></div>
 
-<h2 id="toc_11">forgotpassword</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_13"><a name="forgotpassword"></a> forgotpassword</h2>
 
 <table>
 <thead>
@@ -1359,7 +1414,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 200
 }</code></pre></div>
 
-<h2 id="toc_12">checkforgotverify</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_14"><a name="checkforgotverify"></a> checkforgotverify</h2>
 
 <table>
 <thead>
@@ -1486,7 +1543,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 200
 }</code></pre></div>
 
-<h2 id="toc_13">verifycodeupdatepwd</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_15"><a name="verifycodeupdatepwd"></a> verifycodeupdatepwd</h2>
 
 <table>
 <thead>
@@ -1627,17 +1686,833 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 200
 }</code></pre></div>
 
-<h1 id="toc_14">Predefine API</h1>
+<p><a href="#index">TOP</a> </p>
 
-<h3 id="toc_15">These APIs can get predifine data list for some special data field(gender,locale,zoneinfo) for input when call register/ updatemember API.</h3>
+<h2 id="toc_16"><a name="getsubemail"></a> getsubemail</h2>
 
-<h3 id="toc_16">這些API能夠取得當呼叫register/updatemember 要填入一些特定欄位(像gender,locale,zoneinfo)時，要填入的預載資料清單</h3>
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
 
-<h4 id="toc_17">API root URL : http://qasso.tomin.tw:8081/TominOP/oidc/predefine</h4>
+<tbody>
+<tr>
+<td>/getsubemail</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
 
-<h5 id="toc_18">These API&#39;s result format is all the same like these:</h5>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
 
-<h5 id="toc_19">這些API的呼叫結果格式時都是一樣的像這樣：</h5>
+<tbody>
+<tr>
+<td>取得User的所有副Email</td>
+</tr>
+<tr>
+<td>Get user&#39;s all sub-email</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<p>Successful -</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_data</td>
+<td>The user&#39;s all sub email data in json format</td>
+</tr>
+</tbody>
+</table>
+
+<p>Fail - </p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Get sub-email completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<p>Successful -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_code&quot;: 200,
+  &quot;ret_data&quot;: [
+    {
+      &quot;email&quot;: &quot;a@gmail.com&quot;,
+      &quot;verified&quot;: &quot;false&quot;
+    },
+    {
+      &quot;email&quot;: &quot;smith@tomin.tw&quot;,
+      &quot;verified&quot;: &quot;true&quot;
+    } 
+  ]
+}</code></pre></div>
+
+<p>Fail -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_desc&quot;: &quot;The subject isn&#39;t registried &quot;,
+  &quot;ret_code&quot;: 404
+}</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_17"><a name="updatesubemail"></a> updatesubemail</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/updatesubemail</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>新增或更新指定User的副Email</td>
+</tr>
+<tr>
+<td>Add or update target user&#39;s sub-email</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>email</td>
+<td>(required)String</td>
+<td>e-mail</td>
+</tr>
+<tr>
+<td>verified</td>
+<td>(required)Boolean</td>
+<td>verified</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Update sub-email completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>417</td>
+<td>The sub-email isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Update sub-email completed &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_18"><a name="deletesubemail"></a> deletesubemail</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/deletesubemail</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>刪除指定User的副Email</td>
+</tr>
+<tr>
+<td>Delete target user&#39;s sub-email</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>email</td>
+<td>(required)String</td>
+<td>e-mail</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Delete sub-email completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>417</td>
+<td>The sub-email isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Delete sub-email completed &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<p><a href="#index">TOP</a>   </p>
+
+<h2 id="toc_19"><a name="getsubphone"></a> getsubphone</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/getsubphone</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>取得User的所有副電話號碼</td>
+</tr>
+<tr>
+<td>Get user&#39;s all sub-phone number</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<p>Successful -</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_data</td>
+<td>The user&#39;s all sub-phone number data in json format</td>
+</tr>
+</tbody>
+</table>
+
+<p>Fail - </p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Get sub-phone completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<p>Successful -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_code&quot;: 200,
+  &quot;ret_data&quot;: [
+    {
+      &quot;phone_number&quot;: &quot;+60174584845&quot;,
+      &quot;verified&quot;: &quot;false&quot;
+    },
+    {
+      &quot;phone_number&quot;: &quot;+886-952589550&quot;,
+      &quot;verified&quot;: &quot;true&quot;
+    } 
+  ]
+}</code></pre></div>
+
+<p>Fail -</p>
+
+<div><pre><code class="language-none">{
+  &quot;ret_desc&quot;: &quot;The subject isn&#39;t registried &quot;,
+  &quot;ret_code&quot;: 404
+}</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_20"><a name="updatesubphone"></a> updatesubphone</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/updatesubphone</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>新增或更新指定User的副電話號碼</td>
+</tr>
+<tr>
+<td>Add or update target user&#39;s sub-phone</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>(required)String</td>
+<td>sub-phone number</td>
+</tr>
+<tr>
+<td>verified</td>
+<td>(required)Boolean</td>
+<td>verified</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Update sub-phone completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>419</td>
+<td>The sub-phone isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Update sub-phone completed &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_21"><a name="deletesubphone"></a> deletesubphone</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/deletesubphone</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>刪除User的副phone</td>
+</tr>
+<tr>
+<td>Delete target user&#39;s  sub-phone</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>(required)String</td>
+<td>sub-phone number</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Delete sub-phone completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>419</td>
+<td>The sub-phone isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Delete sub-phone completed &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<p><a href="#index">TOP</a>   </p>
+
+<h1 id="toc_22"><a name="Predefine API"></a> Predefine API</h1>
+
+<h3 id="toc_23">These APIs can get predifine data list for some special data field(gender,locale,zoneinfo) for input when call register/ updatemember API.</h3>
+
+<h3 id="toc_24">這些API能夠取得當呼叫register/updatemember 要填入一些特定欄位(像gender,locale,zoneinfo)時，要填入的預載資料清單</h3>
+
+<h4 id="toc_25">API root URL : http://qasso.tomin.tw:8081/TominOP/oidc/predefine</h4>
+
+<h5 id="toc_26">These API&#39;s result format is all the same like these:</h5>
+
+<h5 id="toc_27">這些API的呼叫結果格式時都是一樣的像這樣：</h5>
 
 <p>Successful -</p>
 
@@ -1718,11 +2593,11 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 401
 }</code></pre></div>
 
-<h5 id="toc_20">Below document is the predefine API calling way and result when calling success :</h5>
+<h5 id="toc_28">Below document is the predefine API calling way and result when calling success :</h5>
 
-<h5 id="toc_21">以下文件就是每個predefine API呼叫方法和成功時的返回結果:</h5>
+<h5 id="toc_29">以下文件就是每個predefine API呼叫方法和成功時的返回結果:</h5>
 
-<h2 id="toc_22">gender</h2>
+<h2 id="toc_30"><a name="gender"></a> gender</h2>
 
 <table>
 <thead>
@@ -1769,7 +2644,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   ]
 }</code></pre></div>
 
-<h2 id="toc_23">locale</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_31"><a name="locale"></a> locale</h2>
 
 <table>
 <thead>
@@ -1822,7 +2699,9 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   ]
 }</code></pre></div>
 
-<h2 id="toc_24">zoneinfo</h2>
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_32"><a name="zoneinfo"></a> zoneinfo</h2>
 
 <table>
 <thead>
@@ -1868,6 +2747,8 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
     &quot;Asia/Taiwan&quot;
   ]
 }</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
 
 
 
