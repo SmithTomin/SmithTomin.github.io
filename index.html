@@ -312,7 +312,7 @@ sup {
 
 <body>
 
-<h1 id="toc_0">Toming SSO API Guide</h1>
+<h1 id="toc_0">Tomin SSO API Guide</h1>
 
 <ul>
 <li><h2 id="toc_1"><a name="index"></a> Index</h2></li>
@@ -336,11 +336,11 @@ sup {
 <li><a href="#forgotpassword">/forgotpassword</a> </li>
 <li><a href="#checkforgotverify">/checkforgotverify</a> </li>
 <li><a href="#verifycodeupdatepwd">/verifycodeupdatepwd</a> </li>
-<li><a href="#getsubemail">/getsubemail</a> </li>
 <li><a href="#updatesubemail">/updatesubemail</a> </li>
+<li><a href="#getsubemail">/getsubemail</a> </li>
 <li><a href="#deletesubemail">/deletesubemail</a> </li>
-<li><a href="#getsubphone">/getsubphone</a> </li>
 <li><a href="#updatesubphone">/updatesubphone</a> </li>
+<li><a href="#getsubphone">/getsubphone</a> </li>
 <li><a href="#deletesubphone">/deletesubphone</a> </li>
 </ul></li>
 <li><p><a href="#Predefine%20API"><strong>Predefine API</strong></a> </p>
@@ -359,7 +359,9 @@ sup {
 
 <h3 id="toc_5">這些API一般是給RP(像EC IM...)用在註冊或是更換使用者資料時使用，大部份的資料規格都是參照此<a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">連結</a>,不過當我們使用這些API時仍需要為了特定需求(如認證)而需加入一些特定的資料(像pwd,seed)</h3>
 
-<h2 id="toc_6"><a name="verifymember"></a> verifymember</h2>
+<h3 id="toc_6">API root URL : http://qasso.tomin.tw:8081/TominOP/oidc</h3>
+
+<h2 id="toc_7"><a name="verifymember"></a> verifymember</h2>
 
 <table>
 <thead>
@@ -462,7 +464,7 @@ sup {
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_7"><a name="register"></a> register</h2>
+<h2 id="toc_8"><a name="register"></a> register</h2>
 
 <table>
 <thead>
@@ -523,6 +525,11 @@ sup {
 <td>seed</td>
 <td>(required)String</td>
 <td>The AES key which is the timestamp when registering( Format : yyyyMMddHHmmss )</td>
+</tr>
+<tr>
+<td>IC</td>
+<td>(optional)String</td>
+<td>The Malaysia user&#39;s IC number</td>
 </tr>
 </tbody>
 </table>
@@ -602,6 +609,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>Register fail: miss parameter &#39;seed&#39;</td>
 </tr>
 <tr>
+<td>415</td>
+<td>AES handle error</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -622,7 +633,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_8"><a name="updatemember"></a> updatemember</h2>
+<h2 id="toc_9"><a name="updatemember"></a> updatemember</h2>
 
 <table>
 <thead>
@@ -681,6 +692,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <li><p>The sub parameter data is must required when registring.The other parameter&#39;s properties are all optional,their detail format is reference by 
 here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">link</a></p></li>
 <li><p>The pwd &amp; seed must change together.</p></li>
+<li><p>If IC data field have value,you can not update it.</p></li>
 </ol>
 
 <p>Result:</p>
@@ -733,6 +745,18 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The subject isn&#39;t registried</td>
 </tr>
 <tr>
+<td>415</td>
+<td>AES handle error</td>
+</tr>
+<tr>
+<td>420</td>
+<td>You can not update user IC</td>
+</tr>
+<tr>
+<td>421</td>
+<td>pwd and seed should be updated together</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -751,7 +775,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_9"><a name="checkidpassword"></a> checkidpassword</h2>
+<h2 id="toc_10"><a name="checkidpassword"></a> checkidpassword</h2>
 
 <table>
 <thead>
@@ -864,7 +888,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_10"><a name="userallinfo"></a> userallinfo</h2>
+<h2 id="toc_11"><a name="userallinfo"></a> userallinfo</h2>
 
 <table>
 <thead>
@@ -1028,6 +1052,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
     &quot;name&quot;: &quot;Smith Liu&quot;,
     &quot;nickname&quot;: &quot;a桑桑&quot;,
     &quot;phone_number&quot;: &quot;886911222333&quot;,
+    &quot;IC&quot;: &quot;abc123&quot;,      //!! The data is for Malaysia user !!!
     &quot;family_name&quot;: null,
     &quot;email&quot;: &quot;a@gmail.com&quot;
   }
@@ -1042,7 +1067,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_11"><a name="allsyncfaildata"></a> allsyncfaildata</h2>
+<h2 id="toc_12"><a name="allsyncfaildata"></a> allsyncfaildata</h2>
 
 <table>
 <thead>
@@ -1195,7 +1220,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_12"><a name="clearsyncfaildata"></a> clearsyncfaildata</h2>
+<h2 id="toc_13"><a name="clearsyncfaildata"></a> clearsyncfaildata</h2>
 
 <table>
 <thead>
@@ -1284,7 +1309,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_13"><a name="forgotpassword"></a> forgotpassword</h2>
+<h2 id="toc_14"><a name="forgotpassword"></a> forgotpassword</h2>
 
 <table>
 <thead>
@@ -1416,7 +1441,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_14"><a name="checkforgotverify"></a> checkforgotverify</h2>
+<h2 id="toc_15"><a name="checkforgotverify"></a> checkforgotverify</h2>
 
 <table>
 <thead>
@@ -1545,7 +1570,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_15"><a name="verifycodeupdatepwd"></a> verifycodeupdatepwd</h2>
+<h2 id="toc_16"><a name="verifycodeupdatepwd"></a> verifycodeupdatepwd</h2>
 
 <table>
 <thead>
@@ -1674,6 +1699,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>Verify code is expired</td>
 </tr>
 <tr>
+<td>415</td>
+<td>AES handle error</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -1688,7 +1717,136 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_16"><a name="getsubemail"></a> getsubemail</h2>
+<h2 id="toc_17"><a name="updatesubemail"></a> updatesubemail</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/updatesubemail</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>新增或更新指定User的副Email</td>
+</tr>
+<tr>
+<td>Add or update target user&#39;s sub-email</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>email</td>
+<td>(required)String</td>
+<td>e-mail</td>
+</tr>
+<tr>
+<td>verified</td>
+<td>(required)Boolean</td>
+<td>verified</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Add or update sub-email completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>417</td>
+<td>The sub-email isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Update sub-email completed &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_18"><a name="getsubemail"></a> getsubemail</h2>
 
 <table>
 <thead>
@@ -1844,132 +2002,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_17"><a name="updatesubemail"></a> updatesubemail</h2>
-
-<table>
-<thead>
-<tr>
-<th>API Path</th>
-<th>Action</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>/updatesubemail</td>
-<td>POST</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>新增或更新指定User的副Email</td>
-</tr>
-<tr>
-<td>Add or update target user&#39;s sub-email</td>
-</tr>
-</tbody>
-</table>
-
-<p>Input Data Type: x-www-form-unlencoded</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Attributes</th>
-<th>description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>sub</td>
-<td>(required)String</td>
-<td>member account ID</td>
-</tr>
-<tr>
-<td>email</td>
-<td>(required)String</td>
-<td>e-mail</td>
-</tr>
-<tr>
-<td>verified</td>
-<td>(required)Boolean</td>
-<td>verified</td>
-</tr>
-</tbody>
-</table>
-
-<p>Result:</p>
-
-<table>
-<thead>
-<tr>
-<th>JSON key</th>
-<th>description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>ret_code</td>
-<td>The back state code which we defined</td>
-</tr>
-<tr>
-<td>ret_desc</td>
-<td>The state&#39;s detail description</td>
-</tr>
-</tbody>
-</table>
-
-<p>state_code Define:</p>
-
-<table>
-<thead>
-<tr>
-<th>ret_code</th>
-<th>ret_desc</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>200</td>
-<td>Update sub-email completed</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Basic authentication header&#39;s format is invalid</td>
-</tr>
-<tr>
-<td>417</td>
-<td>The sub-email isn&#39;t registried</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Server SQL execute error</td>
-</tr>
-</tbody>
-</table>
-
-<div><pre><code class="language-none">Return example:
-{
-  &quot;ret_desc&quot;: &quot;Update sub-email completed &quot;,
-  &quot;ret_code&quot;: 200
-}</code></pre></div>
-
-<p><a href="#index">TOP</a> </p>
-
-<h2 id="toc_18"><a name="deletesubemail"></a> deletesubemail</h2>
+<h2 id="toc_19"><a name="deletesubemail"></a> deletesubemail</h2>
 
 <table>
 <thead>
@@ -2093,7 +2126,136 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a>   </p>
 
-<h2 id="toc_19"><a name="getsubphone"></a> getsubphone</h2>
+<h2 id="toc_20"><a name="updatesubphone"></a> updatesubphone</h2>
+
+<table>
+<thead>
+<tr>
+<th>API Path</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/updatesubphone</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>新增或更新指定User的副電話號碼</td>
+</tr>
+<tr>
+<td>Add or update target user&#39;s sub-phone</td>
+</tr>
+</tbody>
+</table>
+
+<p>Input Data Type: x-www-form-unlencoded</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Attributes</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sub</td>
+<td>(required)String</td>
+<td>member account ID</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>(required)String</td>
+<td>sub-phone number</td>
+</tr>
+<tr>
+<td>verified</td>
+<td>(required)Boolean</td>
+<td>verified</td>
+</tr>
+</tbody>
+</table>
+
+<p>Result:</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON key</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ret_code</td>
+<td>The back state code which we defined</td>
+</tr>
+<tr>
+<td>ret_desc</td>
+<td>The state&#39;s detail description</td>
+</tr>
+</tbody>
+</table>
+
+<p>state_code Define:</p>
+
+<table>
+<thead>
+<tr>
+<th>ret_code</th>
+<th>ret_desc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>200</td>
+<td>Add or update sub-phone completed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Basic authentication header&#39;s format is invalid</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The subject isn&#39;t registried</td>
+</tr>
+<tr>
+<td>419</td>
+<td>The sub-phone isn&#39;t registried</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server SQL execute error</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre><code class="language-none">Return example:
+{
+  &quot;ret_desc&quot;: &quot;Update sub-phone completed &quot;,
+  &quot;ret_code&quot;: 200
+}</code></pre></div>
+
+<p><a href="#index">TOP</a> </p>
+
+<h2 id="toc_21"><a name="getsubphone"></a> getsubphone</h2>
 
 <table>
 <thead>
@@ -2230,13 +2392,13 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 200,
   &quot;ret_data&quot;: [
     {
-      &quot;phone_number&quot;: &quot;+60174584845&quot;,
-      &quot;verified&quot;: &quot;false&quot;
+      &quot;verified&quot;: true,
+      &quot;phone_number&quot;: &quot;+60174584845&quot;
     },
     {
-      &quot;phone_number&quot;: &quot;+886-952589550&quot;,
-      &quot;verified&quot;: &quot;true&quot;
-    } 
+      &quot;verified&quot;: true,
+      &quot;phone_number&quot;: &quot;+60174584846&quot;
+    }
   ]
 }</code></pre></div>
 
@@ -2249,136 +2411,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_20"><a name="updatesubphone"></a> updatesubphone</h2>
-
-<table>
-<thead>
-<tr>
-<th>API Path</th>
-<th>Action</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>/updatesubphone</td>
-<td>POST</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>新增或更新指定User的副電話號碼</td>
-</tr>
-<tr>
-<td>Add or update target user&#39;s sub-phone</td>
-</tr>
-</tbody>
-</table>
-
-<p>Input Data Type: x-www-form-unlencoded</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Attributes</th>
-<th>description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>sub</td>
-<td>(required)String</td>
-<td>member account ID</td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>(required)String</td>
-<td>sub-phone number</td>
-</tr>
-<tr>
-<td>verified</td>
-<td>(required)Boolean</td>
-<td>verified</td>
-</tr>
-</tbody>
-</table>
-
-<p>Result:</p>
-
-<table>
-<thead>
-<tr>
-<th>JSON key</th>
-<th>description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>ret_code</td>
-<td>The back state code which we defined</td>
-</tr>
-<tr>
-<td>ret_desc</td>
-<td>The state&#39;s detail description</td>
-</tr>
-</tbody>
-</table>
-
-<p>state_code Define:</p>
-
-<table>
-<thead>
-<tr>
-<th>ret_code</th>
-<th>ret_desc</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>200</td>
-<td>Update sub-phone completed</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Basic authentication header&#39;s format is invalid</td>
-</tr>
-<tr>
-<td>404</td>
-<td>The subject isn&#39;t registried</td>
-</tr>
-<tr>
-<td>419</td>
-<td>The sub-phone isn&#39;t registried</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Server SQL execute error</td>
-</tr>
-</tbody>
-</table>
-
-<div><pre><code class="language-none">Return example:
-{
-  &quot;ret_desc&quot;: &quot;Update sub-phone completed &quot;,
-  &quot;ret_code&quot;: 200
-}</code></pre></div>
-
-<p><a href="#index">TOP</a> </p>
-
-<h2 id="toc_21"><a name="deletesubphone"></a> deletesubphone</h2>
+<h2 id="toc_22"><a name="deletesubphone"></a> deletesubphone</h2>
 
 <table>
 <thead>
@@ -2502,17 +2535,17 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a>   </p>
 
-<h1 id="toc_22"><a name="Predefine API"></a> Predefine API</h1>
+<h1 id="toc_23"><a name="Predefine API"></a> Predefine API</h1>
 
-<h3 id="toc_23">These APIs can get predifine data list for some special data field(gender,locale,zoneinfo) for input when call register/ updatemember API.</h3>
+<h3 id="toc_24">These APIs can get predifine data list for some special data field(gender,locale,zoneinfo) for input when call register/ updatemember API.</h3>
 
-<h3 id="toc_24">這些API能夠取得當呼叫register/updatemember 要填入一些特定欄位(像gender,locale,zoneinfo)時，要填入的預載資料清單</h3>
+<h3 id="toc_25">這些API能夠取得當呼叫register/updatemember 要填入一些特定欄位(像gender,locale,zoneinfo)時，要填入的預載資料清單</h3>
 
-<h4 id="toc_25">API root URL : http://qasso.tomin.tw:8081/TominOP/oidc/predefine</h4>
+<h4 id="toc_26">API root URL : http://qasso.tomin.tw:8081/TominOP/oidc/predefine</h4>
 
-<h5 id="toc_26">These API&#39;s result format is all the same like these:</h5>
+<h5 id="toc_27">These API&#39;s result format is all the same like these:</h5>
 
-<h5 id="toc_27">這些API的呼叫結果格式時都是一樣的像這樣：</h5>
+<h5 id="toc_28">這些API的呼叫結果格式時都是一樣的像這樣：</h5>
 
 <p>Successful -</p>
 
@@ -2593,11 +2626,11 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
   &quot;ret_code&quot;: 401
 }</code></pre></div>
 
-<h5 id="toc_28">Below document is the predefine API calling way and result when calling success :</h5>
+<h5 id="toc_29">Below document is the predefine API calling way and result when calling success :</h5>
 
-<h5 id="toc_29">以下文件就是每個predefine API呼叫方法和成功時的返回結果:</h5>
+<h5 id="toc_30">以下文件就是每個predefine API呼叫方法和成功時的返回結果:</h5>
 
-<h2 id="toc_30"><a name="gender"></a> gender</h2>
+<h2 id="toc_31"><a name="gender"></a> gender</h2>
 
 <table>
 <thead>
@@ -2646,7 +2679,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_31"><a name="locale"></a> locale</h2>
+<h2 id="toc_32"><a name="locale"></a> locale</h2>
 
 <table>
 <thead>
@@ -2701,7 +2734,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <p><a href="#index">TOP</a> </p>
 
-<h2 id="toc_32"><a name="zoneinfo"></a> zoneinfo</h2>
+<h2 id="toc_33"><a name="zoneinfo"></a> zoneinfo</h2>
 
 <table>
 <thead>
