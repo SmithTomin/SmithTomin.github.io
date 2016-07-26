@@ -312,6 +312,22 @@ sup {
 
 <body>
 
+<div><pre><code class="language-none">======== Update Record =======
+2016/07/26
+
+Description:
+ /register
+ /updatemember
+ /updatesubemail
+ /updatesubphone
+
+ Add new ret_code 
+ 
+ 422 The e-mail is exist
+ 
+ 423 The phone number is exist
+===============================</code></pre></div>
+
 <h1 id="toc_0">Tomin SSO API Guide</h1>
 
 <ul>
@@ -613,6 +629,14 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>AES handle error</td>
 </tr>
 <tr>
+<td>422</td>
+<td>The e-mail is exist</td>
+</tr>
+<tr>
+<td>423</td>
+<td>The phone number is exist</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -755,6 +779,14 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>421</td>
 <td>pwd and seed should be updated together</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The e-mail is exist</td>
+</tr>
+<tr>
+<td>423</td>
+<td>The phone number is exist</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1832,6 +1864,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The sub-email isn&#39;t registried</td>
 </tr>
 <tr>
+<td>422</td>
+<td>The e-mail is exist</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -2239,6 +2275,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>419</td>
 <td>The sub-phone isn&#39;t registried</td>
+</tr>
+<tr>
+<td>423</td>
+<td>The phone number is exist</td>
 </tr>
 <tr>
 <td>500</td>
