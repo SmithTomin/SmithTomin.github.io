@@ -313,22 +313,31 @@ sup {
 <body>
 
 <div><pre><code class="language-none">======== Update Record =======
-2016/07/29
+2016/08/03
 
 Description:
-Add new API
 
- /getsubjectbyemail 
-
- Add send sync info for some API 
- 
+ /register
  /updatemeber
  /updatesubemail
  /updatesubphone
  /deletesubemail
  /deletesubphone
-
-
+ /forgotpassword
+ /checkforgotverify
+ /verifycodeupdatepwd
+ /getsubjectbyemail
+ 
+ will check email`phone_number format.
+ And if you have no data with email`phone number,
+ but update verified will got exception.
+ 
+ Add new Result code:
+| 424 | Email format is illegal
+| 425 | Phone number format is illegal
+| 426 | Update verified fail cause the user is without email
+| 427 | Update verified fail cause the user is without phone number
+ 
 ===============================</code></pre></div>
 
 <h1 id="toc_0">Tomin SSO API Guide</h1>
@@ -640,6 +649,22 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The phone number is exist</td>
 </tr>
 <tr>
+<td>424</td>
+<td>Email format is illegal</td>
+</tr>
+<tr>
+<td>425</td>
+<td>Phone number format is illegal</td>
+</tr>
+<tr>
+<td>426</td>
+<td>Update verified fail cause the user is without email</td>
+</tr>
+<tr>
+<td>427</td>
+<td>Update verified fail cause the user is without phone number</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -791,6 +816,22 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>423</td>
 <td>The phone number is exist</td>
+</tr>
+<tr>
+<td>424</td>
+<td>Email format is illegal</td>
+</tr>
+<tr>
+<td>425</td>
+<td>Phone number format is illegal</td>
+</tr>
+<tr>
+<td>426</td>
+<td>Update verified fail cause the user is without email</td>
+</tr>
+<tr>
+<td>427</td>
+<td>Update verified fail cause the user is without phone number</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1463,6 +1504,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The email is not match with the subject</td>
 </tr>
 <tr>
+<td>424</td>
+<td>Email format is illegal</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -1590,6 +1635,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>414</td>
 <td>Verify code is expired</td>
+</tr>
+<tr>
+<td>424</td>
+<td>Email format is illegal</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1737,6 +1786,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>415</td>
 <td>AES handle error</td>
+</tr>
+<tr>
+<td>424</td>
+<td>Email format is illegal</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1891,6 +1944,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>422</td>
 <td>The e-mail is exist</td>
+</tr>
+<tr>
+<td>424</td>
+<td>Email format is illegal</td>
 </tr>
 <tr>
 <td>500</td>
@@ -2184,6 +2241,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The sub-email isn&#39;t registried</td>
 </tr>
 <tr>
+<td>424</td>
+<td>Email format is illegal</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -2336,6 +2397,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>423</td>
 <td>The phone number is exist</td>
+</tr>
+<tr>
+<td>425</td>
+<td>Phone number format is illegal</td>
 </tr>
 <tr>
 <td>500</td>
@@ -2629,6 +2694,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <td>The sub-phone isn&#39;t registried</td>
 </tr>
 <tr>
+<td>425</td>
+<td>Phone number format is illegal</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Server SQL execute error</td>
 </tr>
@@ -2655,7 +2724,7 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 
 <tbody>
 <tr>
-<td>/deletesubphone</td>
+<td>/getsubjectbyemail</td>
 <td>POST</td>
 </tr>
 </tbody>
@@ -2742,6 +2811,10 @@ here : <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardCla
 <tr>
 <td>411</td>
 <td>The user have no email</td>
+</tr>
+<tr>
+<td>424</td>
+<td>Email format is illegal</td>
 </tr>
 <tr>
 <td>500</td>
